@@ -62,26 +62,27 @@ public class LighthouseResultParser {
 
         double clsScore = getClsScore(jsonData);
         clsTotal += clsScore;
-
         System.out.println("URL: " + requestedUrl + ", CLS: " + clsScore);
-
-        if (clsTarget <= clsScore) {
-            fail.add(urlIndex);
-            return ProcessResult.FAIL;
-        }
 
         if (!outputFolder.exists())
             outputFolder.mkdirs();
 
-        copyHtmlFileToOutputFolder(file, urlIndex);
+        if (clsTarget <= clsScore) {
+            fail.add(urlIndex);
+            copyHtmlFileToOutputFolder(file, urlIndex);
+            return ProcessResult.FAIL;
+        }
+
+
         pass.add(urlIndex);
         return ProcessResult.PASS;
     }
 
     private void copyHtmlFileToOutputFolder(File file, int urlIndex) throws IOException {
         File copyFile = new File(outputFolder, urlIndex + ".html");
-        if (copyFile.exists())
+        if (copyFile.exists()) {
             copyFile.delete();
+        }
         Files.copy(file.toPath(), copyFile.toPath());
     }
 

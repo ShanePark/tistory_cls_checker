@@ -30,9 +30,12 @@ class LighthouseResultParserTest {
         assertThat(parseResult.invalidList()).hasSize(1);
         assertThat(parseResult.invalidList()).containsExactly(1);
 
-        assertThat(outputFolder.listFiles()).hasSize(1);
+        File[] outputFiles = outputFolder.listFiles();
+        assertThat(outputFiles).hasSize(1);
+        File outputFile = outputFiles[0];
+        assertThat(outputFile.getName()).isEqualTo("2.html");
 
-        for (File file : outputFolder.listFiles()) {
+        for (File file : outputFiles) {
             file.delete();
         }
         outputFolder.delete();
