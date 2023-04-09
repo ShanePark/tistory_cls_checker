@@ -27,8 +27,11 @@ chmod +x lighthouse_batch_parallel.sh
 ## 2. check results
 
 ```bash
-./gradle clean build
-java -jar build/libs/tistory-blog-cls-checker-1.0-SNAPSHOT.jar \
+# Build
+./gradlew clean shadowJar
+
+# Run
+java -jar build/libs/tistory-cls-checker-1.0-SNAPSHOT-all.jar \
   --input=./results \
   --output=./bad-cls-list \
   --cls=0.03

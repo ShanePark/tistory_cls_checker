@@ -42,7 +42,9 @@ public class ArgsParseResult {
     }
 
     private File getFolder(String inputFolderArg, File currentPath) {
-        return inputFolderArg.startsWith("/") ? new File(inputFolderArg) : new File(currentPath, inputFolderArg);
+        if (inputFolderArg.startsWith("/"))
+            return new File(inputFolderArg);
+        return new File(currentPath, inputFolderArg);
     }
 
     public void validate() throws ArgsException {
@@ -55,6 +57,10 @@ public class ArgsParseResult {
         if (!outputFolder.exists()) {
             outputFolder.mkdirs();
         }
+        System.out.println("Successfully parsed arguments");
+        System.out.println("Input folder: " + inputFolder.getAbsolutePath());
+        System.out.println("Output folder: " + outputFolder.getAbsolutePath());
+        System.out.println("CLS target: " + clsTarget);
     }
 
 }
