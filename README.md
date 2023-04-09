@@ -1,30 +1,54 @@
 # Tistory blog CLS Checker
 
-## 1. Make reports
+## Intro
 
-### Sequential
+If you have your own blog, you may have experienced CLS (Cumulative Layout Shift) problem.  
+So I made this tool to check CLS of your blog posts.
 
-it's slower but not stress the server.  
-If you need to check all metrics, it's recommended
+Find out which posts have a bad CLS and fix them.
+
+## Instructions
+
+### 1. Make reports
+
+There are two ways to make reports. choose one of them as you like.  
+There are two arguments for each script.
+
+- the first is the URL of your blog
+- the second is maximum number of posts to check. It will check all from 1 to the number you set.
+
+**Sequential**
+
+> it's slower but does not stress the server.  
+> If you need to check all metrics, it's recommended
+>
+Run
 
 ```bash
 npm install -g lighthouse
 chmod +x lighthouse_batch.sh
-./lighthouse_batch.sh https://shanepark.tistory.com 466
+# ex) ./lighthouse_batch.sh https://shanepark.tistory.com 466
+./lighthouse_batch.sh <your blog url> <max number of posts>
 ```
 
-### Parallel
+**Parallel**
 
-it's faster, but maybe affect server performance.  
-But if you only need to check CLS, it's recommended
+> it's faster, but maybe affect server performance.  
+> if you only need to check CLS, it's recommended
+
+Run
 
 ```bash
 npm install -g lighthouse
 chmod +x lighthouse_batch_parallel.sh
-./lighthouse_batch_parallel.sh https://shanepark.tistory.com 466
+# ex) ./lighthouse_batch_parallel.sh https://shanepark.tistory.com 466
+./lighthouse_batch_parallel.sh <your blog url> <max number of posts>
 ```
 
-## 2. check results
+### 2. check results
+
+After making reports, you can check the results.  
+Running this command will generate a list of bad CLS posts.
 
 ```bash
 # Build
