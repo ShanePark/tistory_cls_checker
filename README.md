@@ -28,5 +28,8 @@ chmod +x lighthouse_batch_parallel.sh
 
 ```bash
 ./gradle clean build
-// TODO
+java -jar build/libs/tistory-blog-cls-checker-1.0-SNAPSHOT.jar \
+  --input=./results \
+  --output=./bad-cls-list \
+  --cls=0.03
 ```
