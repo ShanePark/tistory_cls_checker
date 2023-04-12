@@ -6,6 +6,9 @@ fi
 blog_address=$1
 number_of_iterations=$2
 
+# Create the results directory if it does not exist
+mkdir -p results
+
 # Disable exit-on-error behavior
 set +e
 

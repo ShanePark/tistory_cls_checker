@@ -45,6 +45,10 @@ chmod +x lighthouse_batch_parallel.sh
 ./lighthouse_batch_parallel.sh <your blog url> <max number of posts>
 ```
 
+![image-20230413000619272](README.assets/image-20230413000619272.png)
+
+> On my MacBook Air M2 (24GB) when I run it in parallel, it exceeds 101 degrees Celsius and throttles quickly.
+
 ### 2. check results
 
 After making reports, you can check the results.  
@@ -60,3 +64,13 @@ java -jar build/libs/tistory-cls-checker-1.0-SNAPSHOT-all.jar \
   --output=./bad-cls-list \
   --cls=0.03
 ```
+
+### 3. Your turn
+
+![image-20230413004631177](README.assets/image-20230413004631177.png)
+
+It prints Passed, failed, and also invalid ( Deleted or hidden) postings list.
+
+Also CLS Average is provided so you can determine your next step.
+
+>  Tip: fix your image size, avoid using web fonts
